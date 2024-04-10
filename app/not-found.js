@@ -14,11 +14,16 @@ export default function NotFound() {
     params = locale[1];
   }
 
+  console.log(path, params);
+
   useEffect(() => {
     let temp = null;
     const getData = async () => {
       if (params) {
         temp = await getDictionary(params);
+        setData({ ...temp });
+      } else {
+        temp = await getDictionary("en");
         setData({ ...temp });
       }
     };
